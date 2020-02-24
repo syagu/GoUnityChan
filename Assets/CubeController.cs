@@ -22,6 +22,7 @@ public class CubeController : MonoBehaviour
     public GameObject UnityChan2D { get; private set; }
 
     int sound = 0;
+    private string unitychan2D;
 
     // Use this for initialization
     void Start()
@@ -54,10 +55,17 @@ public class CubeController : MonoBehaviour
             sound01.PlayOneShot(sound01.clip);
             sound++;
         }
-        if (collision.gameObject == UnityChan2D)
+        
+        
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == unitychan2D)
         {
-            sound01.PlayOneShot(sound01.clip);
-            sound = 0;
+            {
+                sound01.PlayOneShot(sound01.clip);
+                sound = 0;
+            }
         }
     }
 }
